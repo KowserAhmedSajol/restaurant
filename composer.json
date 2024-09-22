@@ -1,0 +1,31 @@
+{
+    "name": "restaurant/restaurant",
+    "type": "library",
+    "description": "Restaurant Configuration",
+    "keywords": [
+        "Laravel"
+    ],
+    "authors": [
+        {
+            "name": "Md Sani",
+            "email": "mdsani146@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "restaurant\\restaurant\\": "src/"
+        }
+    },
+    "autoload-dev": [],
+    "extra": {
+        "copyright": "mdsani146@gmail.com",
+        "laravel": {
+            "providers": [
+                "restaurant\\restaurant\\Providers\\PackageServiceProvider"
+            ],
+            "aliases": []
+        }
+    },
+    "version": "1.0.0",
+    "license": "MIT"
+}
