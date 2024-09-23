@@ -1,7 +1,7 @@
 <x-smart-master>
     <x-smart-card>
         <x-slot name="heading">
-        {{ __('ResCategorys') }}
+        {{ __('Res Categorys') }}
         </x-slot>
         <x-slot name="body">
             <x-smart-alert-message :message="session('success')" type="success" />

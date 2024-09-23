@@ -11,6 +11,7 @@ use restaurant\restaurant\Requests\StoreResCategoryRequest;
 use restaurant\restaurant\Requests\UpdateResCategoryRequest;
 use Illuminate\Support\Facades\Storage;
 
+
 class ResCategoryBaseController extends Controller
 {
     public static $visiblePermissions = [
@@ -55,22 +56,25 @@ class ResCategoryBaseController extends Controller
     {
         try {
             if ($request->hasFile('image')) {
-                // Get the uploaded image file
                 $image = $request->file('image');
-                // Generate a unique file name
                 $imageName = Str::uuid() . '.' . $image->getClientOriginalExtension();
-                // Save the image to the public storage (or another directory)
                 $imagePath = $image->storeAs('images/res_categories', $imageName, 'public');
             }
-        
-            // Create the ResCategory with image path if available
-            $resCategoryData = ['uuid' => Str::uuid()] + $request->all();
+            
+            // Generate the slug from the name
+            $slug = Str::slug($request->name, '-');
+            
+            // Create the ResCategory with image path and slug if available
+            $resCategoryData = [
+                'uuid' => Str::uuid(),
+                'slug' => $slug,  // Add the generated slug here
+            ] + $request->all();
             
             // Add image path to the data array if an image was uploaded
             if (isset($imagePath)) {
                 $resCategoryData['image'] = $imagePath;
             }
-        
+            
             // Save the ResCategory with all data
             $res_category = ResCategory::create($resCategoryData);
             //handle relationship store
@@ -118,7 +122,7 @@ class ResCategoryBaseController extends Controller
                 if ($res_category->image) {
                     Storage::disk('public')->delete($res_category->image);
                 }
-    
+            
                 // Upload the new image
                 $image = $request->file('image');
                 $imageName = Str::uuid() . '.' . $image->getClientOriginalExtension();
@@ -131,8 +135,11 @@ class ResCategoryBaseController extends Controller
                 // If no image is uploaded, just update the other data
                 $requestData = $request->all();
             }
-    
-            // Update the ResCategory record
+            
+            // Generate the slug from the name and add it to the request data
+            $requestData['slug'] = Str::slug($request->name, '-');
+            
+            // Update the ResCategory record with the new data
             $res_category->update($requestData);
     
             // Handle relationship update (if necessary)

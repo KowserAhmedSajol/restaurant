@@ -29,8 +29,8 @@ class ResTaxBaseController extends Controller
      */
     public function index()
     {
-        return view('restaurant::restaxes.index', [
-            'restaxes' => ResTax::latest()->get()
+        return view('restaurant::res_taxes.index', [
+            'res_taxes' => ResTax::latest()->get()
         ]);
     }
 
@@ -41,7 +41,7 @@ class ResTaxBaseController extends Controller
      */
     public function create()
     {
-        return view('restaurant::restaxes.create');
+        return view('restaurant::res_taxes.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ResTaxBaseController extends Controller
      */
     public function show(ResTax $res_tax)
     {
-        return view('restaurant::restaxes.show', compact('res_tax'));
+        return view('restaurant::res_taxes.show', compact('res_tax'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ResTaxBaseController extends Controller
      */
     public function edit(ResTax $res_tax)
     {
-        return view('restaurant::restaxes.edit', compact('res_tax'));
+        return view('restaurant::res_taxes.edit', compact('res_tax'));
     }
 
     /**

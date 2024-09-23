@@ -29,8 +29,8 @@ class ResOrderItemBaseController extends Controller
      */
     public function index()
     {
-        return view('restaurant::resorderitems.index', [
-            'resorderitems' => ResOrderItem::latest()->get()
+        return view('restaurant::res_order_items.index', [
+            'res_order_items' => ResOrderItem::latest()->get()
         ]);
     }
 
@@ -41,7 +41,7 @@ class ResOrderItemBaseController extends Controller
      */
     public function create()
     {
-        return view('restaurant::resorderitems.create');
+        return view('restaurant::res_order_items.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ResOrderItemBaseController extends Controller
      */
     public function show(ResOrderItem $res_order_item)
     {
-        return view('restaurant::resorderitems.show', compact('res_order_item'));
+        return view('restaurant::res_order_items.show', compact('res_order_item'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ResOrderItemBaseController extends Controller
      */
     public function edit(ResOrderItem $res_order_item)
     {
-        return view('restaurant::resorderitems.edit', compact('res_order_item'));
+        return view('restaurant::res_order_items.edit', compact('res_order_item'));
     }
 
     /**

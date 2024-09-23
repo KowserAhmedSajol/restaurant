@@ -29,8 +29,8 @@ class ResTableBaseController extends Controller
      */
     public function index()
     {
-        return view('restaurant::restables.index', [
-            'restables' => ResTable::latest()->get()
+        return view('restaurant::res_tables.index', [
+            'res_tables' => ResTable::latest()->get()
         ]);
     }
 
@@ -41,7 +41,7 @@ class ResTableBaseController extends Controller
      */
     public function create()
     {
-        return view('restaurant::restables.create');
+        return view('restaurant::res_tables.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ResTableBaseController extends Controller
      */
     public function show(ResTable $res_table)
     {
-        return view('restaurant::restables.show', compact('res_table'));
+        return view('restaurant::res_tables.show', compact('res_table'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ResTableBaseController extends Controller
      */
     public function edit(ResTable $res_table)
     {
-        return view('restaurant::restables.edit', compact('res_table'));
+        return view('restaurant::res_tables.edit', compact('res_table'));
     }
 
     /**

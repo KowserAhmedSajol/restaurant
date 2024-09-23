@@ -12,11 +12,11 @@ class CreateResCategoriesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name', 255);
-$table->string('slug', 255)->nullable();
-$table->string('image', 255)->nullable();
-$table->string('serial', 255)->nullable();
-$table->string('color', 255)->nullable();
-$table->boolean('is_active')->default(0);
+            $table->string('slug', 255)->nullable();
+            $table->string('image', 255)->nullable();
+            $table->string('serial', 255)->nullable();
+            $table->string('color', 255)->nullable();
+            $table->boolean('is_active')->default(0);
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

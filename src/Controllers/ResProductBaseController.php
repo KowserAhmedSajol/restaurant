@@ -29,8 +29,8 @@ class ResProductBaseController extends Controller
      */
     public function index()
     {
-        return view('restaurant::resproducts.index', [
-            'resproducts' => ResProduct::latest()->get()
+        return view('restaurant::res_products.index', [
+            'res_products' => ResProduct::latest()->get()
         ]);
     }
 
@@ -41,7 +41,7 @@ class ResProductBaseController extends Controller
      */
     public function create()
     {
-        return view('restaurant::resproducts.create');
+        return view('restaurant::res_products.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ResProductBaseController extends Controller
      */
     public function show(ResProduct $res_product)
     {
-        return view('restaurant::resproducts.show', compact('res_product'));
+        return view('restaurant::res_products.show', compact('res_product'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ResProductBaseController extends Controller
      */
     public function edit(ResProduct $res_product)
     {
-        return view('restaurant::resproducts.edit', compact('res_product'));
+        return view('restaurant::res_products.edit', compact('res_product'));
     }
 
     /**
