@@ -10,37 +10,48 @@
                 <div class="row">
                     <!-- Dynamic Fields -->
                     <div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="res_categoryInput">{{ __('Res_category') }}</x-smart-label>
-        <x-smart-selecttrio tableName="res_categories" name="res_category" :value="old('res_category')"/>
-    </div>
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="res_categoryInput">{{ __('Res_category') }}</x-smart-label>
+                            <x-smart-selecttrio tableName="res_categories" name="res_category"
+                                :value="old('res_category')" />
+                        </div>
 
-</div><div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="nameInput">{{ __('Name') }}</x-smart-label>
-        <x-smart-text type="text" id="nameInput" name="name" :value="old('name')" placeholder="Enter Name" />
-    </div>
-</div><div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="priceInput">{{ __('Price') }}</x-smart-label>
-        <x-smart-text type="text" id="priceInput" name="price" :value="old('price')" placeholder="Enter Price" />
-    </div>
-</div><div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="imageInput">{{ __('Image') }}</x-smart-label>
-        <x-smart-text type="file" id="imageInput" name="image" :value="old('image')" placeholder="Enter Image" />
-    </div>
-</div><div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="statusInput">{{ __('Status') }}</x-smart-label>
-        <x-smart-text type="yesno" id="statusInput" name="status" :value="old('status')" placeholder="Enter Status" />
-    </div>
-</div><div class="{{$decoration['class']['elementwrapper']}}">
-    <div class="{{$decoration['class']['elementcontainer'] }}">
-        <x-smart-label for="serialInput">{{ __('Serial') }}</x-smart-label>
-        <x-smart-text type="text" id="serialInput" name="serial" :value="old('serial')" placeholder="Enter Serial" />
-    </div>
-</div>
+                    </div>
+                    <div class="{{$decoration['class']['elementwrapper']}}">
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="nameInput">{{ __('Name') }}</x-smart-label>
+                            <x-smart-text type="text" id="nameInput" name="name" :value="old('name')"
+                                placeholder="Enter Name" />
+                        </div>
+                    </div>
+                    <div class="{{$decoration['class']['elementwrapper']}}">
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="priceInput">{{ __('Price') }}</x-smart-label>
+                            <x-smart-text type="text" id="priceInput" name="price" :value="old('price')"
+                                placeholder="Enter Price" />
+                        </div>
+                    </div>
+                    <div class="{{$decoration['class']['elementwrapper']}}">
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="imageInput">{{ __('Image') }}</x-smart-label>
+                            <x-smart-text type="file" id="imageInput" name="image" :value="old('image')"
+                                placeholder="Enter Image" />
+                        </div>
+                    </div>
+                    <div class="{{$decoration['class']['elementwrapper']}} d-none">
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="statusInput">{{ __('Status') }}</x-smart-label>
+                            <x-smart-text type="hidden" id="statusInput" name="status" :value="1"
+                                placeholder="Enter Status" />
+                        </div>
+                    </div>
+                    <div class="{{$decoration['class']['elementwrapper']}} d-none">
+                        <div class="{{$decoration['class']['elementcontainer'] }}">
+                            <x-smart-label for="serialInput">{{ __('Serial') }}</x-smart-label>
+                            <x-smart-text type="hidden" id="serialInput" name="serial" :value="1"
+                                placeholder="Enter Serial" />
+                        </div>
+                    </div>
                     <div class="{{$decoration['class']['formfooter']}} mt-2">
                         <x-smart-btn-submit />
                     </div>

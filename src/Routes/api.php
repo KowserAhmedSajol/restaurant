@@ -20,5 +20,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::resource('res_tables', ResTableApiController::class);
         Route::resource('res_categories', ResCategoryApiController::class);
 
+        Route::post('/confirm-order', [ResOrderApiController::class, 'confirmOrder']);
+        Route::get('/tables', [ResTableApiController::class, 'getTables']);
+
     });
 });

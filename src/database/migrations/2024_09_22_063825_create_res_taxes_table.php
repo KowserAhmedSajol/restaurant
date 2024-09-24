@@ -12,9 +12,8 @@ class CreateResTaxesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name');
-$table->double('percentage');
-$table->boolean('status')->default(1);
-
+            $table->double('percentage');
+            $table->boolean('status')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

@@ -30,10 +30,10 @@
                             <x-smart-label for="colorInput">{{ __('Color') }}</x-smart-label>
                             <x-smart-text type="text" id="colorInput" name="color" :value="old('color')" placeholder="Enter Color" />
                         </div>
-                    </div><div class="{{$decoration['class']['elementwrapper']}}">
+                    </div><div class="{{$decoration['class']['elementwrapper']}} d-none">
                         <div class="{{$decoration['class']['elementcontainer'] }}">
                             <x-smart-label for="is_activeInput">{{ __('Is_active') }}</x-smart-label>
-                            <x-smart-text type="yesno" id="is_activeInput" name="is_active" :value="old('is_active')" placeholder="Enter Is_active" />
+                            <x-smart-text type="hidden" id="is_activeInput" name="is_active" :value="1" placeholder="Enter Is_active" />
                         </div>
                     </div>
                     <div class="{{$decoration['class']['formfooter']}} mt-2">
