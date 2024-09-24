@@ -5,61 +5,16 @@
                 <div style="font-size:30px; font-weight:bold;">Tables</div>
             </div> --}}
             <div class="row row-tile no-gutters">
-                <div class="col-3">
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple disabled">
+                @foreach ($resTables as $table)
+                    
+                <div class="col-2">
+                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple {{ $table->is_occupied ? 'disabled' : '' }}">
                         <input type="radio" name="options" id="table1" autocomplete="off">
                         <div class="circle-letter"></div>
-                        <span>Table 1</span>
-                    </label>
-
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table2" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 2</span>
+                        <span>{{ $table->name }}</span>
                     </label>
                 </div>
-
-                <div class="col-3">
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table3" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 3</span>
-                    </label>
-
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table4" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 4</span>
-                    </label>
-                </div>
-
-                <div class="col-3">
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table5" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 5</span>
-                    </label>
-
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table6" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 6</span>
-                    </label>
-                </div>
-
-                <div class="col-3">
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table7" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 7</span>
-                    </label>
-
-                    <label class="btn tbl-btn btn-block btn-float m-0 legitRipple">
-                        <input type="radio" name="options" id="table8" autocomplete="off">
-                        <div class="circle-letter"></div>
-                        <span>Table 8</span>
-                    </label>
-                </div>
+                @endforeach
 
                 <!-- Repeat for other columns as needed -->
             </div>
@@ -76,82 +31,24 @@
                 <div class="card-body" style="min-height:1000px;">
                     <x-smart-text class="mb-2" type="text" id="qtyInput" name="search" placeholder="Search Product" />
                     <div class="row" id="product-list">
-                        <!-- Burger Item Header -->
+                        @foreach ($resProducts as $key => $resProduct)
                         <div class="col-md-12">
-                            <h5 class="card-title product-list-title" data-category="burger"><b><u>Burger Item</u></b></h5>
+                            <h5 class="card-title product-list-title" data-category="{{ $key }}"><b><u>{{ $key }}</u></b></h5>
                         </div>
-                        <!-- Burger Items -->
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://www.burgerologybd.com/wp-content/uploads/2019/03/Chicken-Burger.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Chicken Burger</b></h5>
+                            @foreach ($resProduct as $product)
+                                <div class="col-md-2 productToAdd" style="position: relative;" data-productId="{{ $product->id }}" data-category="{{ $key }}">
+                                    <div style="position: absolute; top:90px; right:14px; border:1px solid white;  background-color:#F95353; color:white; padding:8px; z-index:1000; border-radius:50%;">
+                                        <b class="price" style="font-size: 10px;">${{ $product->price }}</b>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" style="height:140px;" src="{{ asset('storage/' . $product->image) }}" alt="">
+                                        <div class="card-body">
+                                            <h5 class="card-title search-title text-center"><b>{{ $product->name }}</b></h5>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://www.thecookingcollective.com.au/wp-content/uploads/2022/04/a-finished-crispy-chicken-burger-on-a-wooden-board-500x375.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Smoky Chicken Cheese</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://loveincorporated.blob.core.windows.net/contentimages/main/3d2165d0-7833-4c6a-a62b-3ded52c6da37-smoky-chicken-burgers.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Chicken Cheese Burger</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://www.burgerologybd.com/wp-content/uploads/2019/01/IMG_2649-1.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Smoky BBQ Chicken</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://www.burgerologybd.com/wp-content/uploads/2019/03/Chicken-Burger.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Juicy Layer</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="burger">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://www.burgerologybd.com/wp-content/uploads/2019/01/IMG_2649-1.jpg" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Beef Burger</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <!-- Meatbox Item Header -->
-                        <div class="col-md-12">
-                            <h5 class="card-title product-list-title" data-category="meatbox"><b><u>Meatbox Item</u></b></h5>
-                        </div>
-                        <!-- Meatbox Items -->
-                        <div class="col-md-3" data-category="meatbox">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://images.deliveryhero.io/image/fd-bd/Products/2450241.jpg?width=%s" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>BBQ Chicken Meatbox</b></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3" data-category="meatbox">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" style="height:180px;" src="https://images.deliveryhero.io/image/fd-bd/Products/7033964.jpg?width=%s" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title search-title text-center"><b>Cheesy Box</b></h5>
-                                </div>
-                            </div>
-                        </div> 
-                        <!-- Add more categories dynamically -->
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
                 
@@ -171,69 +68,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="order-item" data-product-id="1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-0"><strong style="font-size: 18px">Chicken Cheese Burger</strong></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-1">
-                            <p><strong>Price:</strong> <span class="product-price">$230.00</span></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
-                                <input type="text" class="form-control qty-input" value="2" min="1"
-                                    style="width: 50px; margin: 0 10px;">
-                                <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="order-item" data-product-id="1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-0"><strong style="font-size: 18px">Smoky BBQ Beef</strong></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-1">
-                            <p><strong>Price:</strong> <span class="product-price">$260.00</span></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
-                                <input type="text" class="form-control qty-input" value="2" min="1"
-                                    style="width: 50px; margin: 0 10px;">
-                                <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="order-item" data-product-id="1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-0"><strong style="font-size: 18px">Smoky Chicken Sandwich</strong></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-1">
-                            <p><strong>Price:</strong> <span class="product-price">$210.00</span></p>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
-                                <input type="text" class="form-control qty-input" value="2" min="1"
-                                    style="width: 50px; margin: 0 10px;">
-                                <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-
-                    <div class="total-price">
-                        
+                    <!-- Cart items will be added here dynamically -->
+                    <div class="cart-items"></div> <!-- This is where cart items will be added -->
+                    
+                    <!-- Total Price section -->
+                    <div class="total-price mt-4">
                         <div class="d-flex justify-content-between align-items-center">
                             <p><strong>Total Price:</strong></p>
-                            <span>$130.00</span>
+                            <span class="total-price-amount">$0.00</span> <!-- Dynamically update this span with the total price -->
                         </div>
                     </div>
                 </div>
@@ -364,6 +206,8 @@
         {{-- page-specific-js --}}
         <script>
             $(document).ready(function() {
+                
+                $('.productToAdd').on('click', addToCart);
                 $('.sidebar-control').click();
                 $('#qtyInput').on('keyup', function () {
                     var value = $(this).val().toLowerCase();
@@ -436,6 +280,77 @@
                     $('.total-price span').text('$' + total.toFixed(2));
                 }
             });
+            function addToCart()
+            {
+                // console.log('cart');
+                
+                const productId = $(this).data('productid'); // Get the data-productId attribute
+                const productName = $(this).find('.search-title b').text(); // Get the product name
+                const productPrice = parseFloat($(this).find('.price').text().replace('$', '')); // Get the product price
+
+                let existingCartItem = $('.cart-items').find('.cart-item[data-product-id="' + productId + '"]');
+                if (existingCartItem.length) {
+                    let qtyInput = existingCartItem.find('.qty-input');
+                    let newQty = parseInt(qtyInput.val()) + 1;
+                    qtyInput.val(newQty);
+                } else {
+                    let newItem = `
+                        <div class="cart-item" data-product-id="${productId}">
+                            <div class="order-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mb-0"><strong style="font-size: 18px">${productName}</strong></p>
+                                    <div class="d-flex align-items-center">
+                                        <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <p><strong>Price:</strong> <span class="product-price">$${productPrice.toFixed(2)}</span></p>
+                                    <div class="d-flex align-items-center">
+                                        <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
+                                        <input type="text" class="form-control qty-input" value="1" min="1"
+                                            style="width: 50px; margin: 0 10px;">
+                                        <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    `;
+
+                    $('.cart-items').append(newItem);
+                }
+
+                updateTotalPrice();
+            }
+            $(document).on('click', '.delete-item', function() {
+                $(this).closest('.cart-item').remove();
+                updateTotalPrice(); // Update total price when an item is deleted
+            });
+            $(document).on('click', '.qty-plus, .qty-minus', function() {
+                let qtyInput = $(this).siblings('.qty-input');
+                let currentQty = parseInt(qtyInput.val());
+
+                if ($(this).hasClass('qty-plus')) {
+                    qtyInput.val(currentQty + 1);
+                } else if (currentQty > 1) {
+                    qtyInput.val(currentQty - 1);
+                }
+
+                updateTotalPrice(); // Update total price when quantity changes
+            });
+            function updateTotalPrice() {
+                let total = 0;
+
+                // Loop through each cart item and calculate the total price
+                $('.cart-item').each(function() {
+                    let price = parseFloat($(this).find('.product-price').text().replace('$', ''));
+                    let quantity = parseInt($(this).find('.qty-input').val());
+                    total += price * quantity;
+                });
+
+                // Update the total price display
+                $('.total-price-amount').text(`$${total.toFixed(2)}`);
+            }
         </script>
     @endpush
 </x-smart-master>

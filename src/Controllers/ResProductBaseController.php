@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use restaurant\restaurant\Requests\StoreResProductRequest;
 use restaurant\restaurant\Requests\UpdateResProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ResProductBaseController extends Controller
 {
@@ -53,7 +54,28 @@ class ResProductBaseController extends Controller
     public function store(StoreResProductRequest $request)
     {
         try {
-            $res_product = ResProduct::create(['uuid'=> Str::uuid()] + $request->all());
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = Str::uuid() . '.' . $image->getClientOriginalExtension();
+                $imagePath = $image->storeAs('images/res_products', $imageName, 'public');
+            }
+            
+            // Generate the slug from the product name
+            $slug = Str::slug($request->name, '-');
+            
+            // Prepare the ResProduct data
+            $resProductData = [
+                'uuid' => Str::uuid(),
+                'slug' => $slug,  // Add the generated slug here
+            ] + $request->all();
+            
+            // Add image path to the data array if an image was uploaded
+            if (isset($imagePath)) {
+                $resProductData['image'] = $imagePath;
+            }
+            
+            // Create the ResProduct with the prepared data
+            $res_product = ResProduct::create($resProductData);
             //handle relationship store
             return redirect()->route('res_products.index')->withSuccess(__('Successfully Created'));
         } catch (\Exception | QueryException $e) {
@@ -110,6 +132,13 @@ class ResProductBaseController extends Controller
     public function destroy(ResProduct $res_product)
     {
         try {
+            // Check if the product has an image
+            if ($res_product->image) {
+                // Delete the image from storage
+                Storage::disk('public')->delete($res_product->image);
+            }
+            
+            // Delete the ResProduct record
             $res_product->delete();
 
             return redirect()->route('res_products.index')->withSuccess(__('Successfully Deleted'));

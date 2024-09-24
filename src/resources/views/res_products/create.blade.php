@@ -12,8 +12,9 @@
                     <div class="{{$decoration['class']['elementwrapper']}}">
     <div class="{{$decoration['class']['elementcontainer'] }}">
         <x-smart-label for="res_categoryInput">{{ __('Res_category') }}</x-smart-label>
-        <x-smart-selecttrio tableName="res_categorys" name="res_category" :value="old('res_category')"/>
+        <x-smart-selecttrio tableName="res_categories" name="res_category" :value="old('res_category')"/>
     </div>
+
 </div><div class="{{$decoration['class']['elementwrapper']}}">
     <div class="{{$decoration['class']['elementcontainer'] }}">
         <x-smart-label for="nameInput">{{ __('Name') }}</x-smart-label>
@@ -27,7 +28,7 @@
 </div><div class="{{$decoration['class']['elementwrapper']}}">
     <div class="{{$decoration['class']['elementcontainer'] }}">
         <x-smart-label for="imageInput">{{ __('Image') }}</x-smart-label>
-        <x-smart-text type="text" id="imageInput" name="image" :value="old('image')" placeholder="Enter Image" />
+        <x-smart-text type="file" id="imageInput" name="image" :value="old('image')" placeholder="Enter Image" />
     </div>
 </div><div class="{{$decoration['class']['elementwrapper']}}">
     <div class="{{$decoration['class']['elementcontainer'] }}">

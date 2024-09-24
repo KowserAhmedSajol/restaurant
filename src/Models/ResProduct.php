@@ -31,9 +31,9 @@ class ResProduct extends Model
     }
 
     
-public function resCategorys(): HasMany
+public function category(): BelongsTo
 {
-    return $this->hasMany(ResCategory::class, 'ResCategory_id');
+    return $this->belongsTo(ResCategory::class, 'res_category_id');
 }
 
 public function resOrder(): BelongsTo
