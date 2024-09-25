@@ -20,5 +20,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('res_categories', ResCategoryController::class);
 
     Route::get('/product-order', [ResProductController::class, 'product']);
+    Route::get('/product-order-list', [ResProductController::class, 'productOrderList']);
 
 });

@@ -116,7 +116,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 81%;
+            height: 100%;
         }
 
         #tableoverlay {
@@ -125,7 +125,7 @@
             left: 0;
             z-index: 1000;
             width: 100%;
-            height: 91%;
+            height: 100%;
             display: none;
             background-color: rgb(255, 255, 255) !important;
             /* opacity: 0.4; */

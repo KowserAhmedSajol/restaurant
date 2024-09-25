@@ -5,6 +5,7 @@ namespace restaurant\restaurant\Controllers;
 use restaurant\restaurant\Models\ResTable;
 use restaurant\restaurant\Models\ResTax;
 use restaurant\restaurant\Models\ResProduct;
+use restaurant\restaurant\Models\ResOrder;
 
 
 class ResProductController extends ResProductBaseController
@@ -19,5 +20,13 @@ class ResProductController extends ResProductBaseController
         // dd($resProducts);
         $resTables = ResTable::where('status',1)->get();
         return view('restaurant::user_interface.product',compact('resTables','resProducts','resTaxes'));
+    }
+
+    public function productOrderList()
+    {
+        $resOrders = ResOrder::orderBy('id', 'desc')->get();
+        $resProducts = ResProduct::with('category')->get();
+        // dd($resOrders);
+        return view('restaurant::user_interface.product-order-list', compact('resOrders','resProducts'));
     }
 }

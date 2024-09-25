@@ -10,6 +10,7 @@ use restaurant\restaurant\Models\ResOrderItem;
 use restaurant\restaurant\Models\ResProduct;
 use restaurant\restaurant\Models\ResTable;
 use Illuminate\Support\Facades\DB;
+use restaurant\restaurant\Models\ResTax;
 
 class ResOrderApiController extends ResOrderApiBaseController
 {
@@ -27,8 +28,8 @@ class ResOrderApiController extends ResOrderApiBaseController
             'token_no' => $tokenNo,   
             'order_time' => now()->format('H:i:s'),  
             'order_date' => now()->format('Y-m-d'),  
-            'total_qty' => 0,  // Set initially to 0, will update later
-            'total_amount' => 0,  // Set initially to 0, will update later
+            'total_qty' => 0, 
+            'total_amount' => 0, 
             'status' => 'Ordered',
         ]);
         
@@ -59,7 +60,16 @@ class ResOrderApiController extends ResOrderApiBaseController
             $totalQty += $qty;
             $totalAmount += $amount;
         }
+        $resTaxes = ResTax::where('status', 1)->get();
+        $totalTaxAmount = 0;
         
+        foreach ($resTaxes as $tax) {
+            $taxAmount = ($tax->percentage / 100) * $totalAmount; // Calculate tax based on total amount
+            $totalTaxAmount += $taxAmount; // Sum up all tax amounts
+        }
+        
+        // Add total tax to total amount
+        $totalAmount += $totalTaxAmount;
         // Update the total qty and total amount in the res_order
         $res_order->update([
             'total_qty' => $totalQty,
