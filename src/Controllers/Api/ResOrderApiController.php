@@ -32,8 +32,6 @@ class ResOrderApiController extends ResOrderApiBaseController
             'total_amount' => 0, 
             'status' => 'Ordered',
         ]);
-        
-        // Variables to store total qty and amount
         $totalQty = 0;
         $totalAmount = 0;
         
@@ -55,8 +53,6 @@ class ResOrderApiController extends ResOrderApiBaseController
                 'rate' => $resProduct->price,
                 'amount' => $amount,
             ]);
-        
-            // Add to total quantity and total amount
             $totalQty += $qty;
             $totalAmount += $amount;
         }
@@ -64,13 +60,10 @@ class ResOrderApiController extends ResOrderApiBaseController
         $totalTaxAmount = 0;
         
         foreach ($resTaxes as $tax) {
-            $taxAmount = ($tax->percentage / 100) * $totalAmount; // Calculate tax based on total amount
-            $totalTaxAmount += $taxAmount; // Sum up all tax amounts
+            $taxAmount = ($tax->percentage / 100) * $totalAmount; 
+            $totalTaxAmount += $taxAmount; 
         }
-        
-        // Add total tax to total amount
         $totalAmount += $totalTaxAmount;
-        // Update the total qty and total amount in the res_order
         $res_order->update([
             'total_qty' => $totalQty,
             'total_amount' => $totalAmount,
@@ -88,26 +81,16 @@ class ResOrderApiController extends ResOrderApiBaseController
     }
     private function generateTokenNumber()
     {
-        // Get today's date
         $today = now()->format('Y-m-d');
-    
-        // Get the maximum token_no used today, explicitly casting it as an integer
         $maxTokenNo = ResOrder::whereDate('order_date', $today)->max(DB::raw('CAST(token_no AS UNSIGNED)'));
-
-        // If no token exists for today, start with 1, otherwise increment the max token number
         return $maxTokenNo ? $maxTokenNo + 1 : 1;
     }
     
     
     private function generateOrderNumber($tokenNo)
     {
-        // Define a company prefix (for example, 'COMP')
         $companyPrefix = 'COMP';
-
-        // Get the current year, month, and day
-        $date = now()->format('Ymd'); // Format: 20240924 (for September 24, 2024)
-
-        // Create the order number in the format 'company_YYYYMMDD_token_no'
+        $date = now()->format('Ymd');
         return $companyPrefix . '_' . $date . '_' . $tokenNo;
     }
 

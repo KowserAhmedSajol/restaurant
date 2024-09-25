@@ -23,6 +23,8 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('/confirm-order', [ResOrderApiController::class, 'confirmOrder']);
         Route::get('/tables', [ResTableApiController::class, 'getTables']);
         Route::post('/load-order-item', [ResOrderItemApiController::class, 'loadOrderItem']);
+        Route::post('/update-order-item', [ResOrderItemApiController::class, 'updateOrderItem']);
+        Route::post('/order-payment', [ResBillingApiController::class, 'orderPayment']);
 
     });
 });

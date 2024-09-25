@@ -450,10 +450,12 @@
             let selectedTableId = $('label.tbl-btn.active').data('table-id'); // Assuming the selected table button has 'active' class
             if (!selectedTableId) {
                 alert('Please select a table.');
+                $("#tableoverlay").fadeOut(300);
                 return;
             }
             if (products.length <= 0) {
                 alert('Please add at least one product to your order.');
+                $("#tableoverlay").fadeOut(300);
                 return; // Exit the function if no products
             }
 

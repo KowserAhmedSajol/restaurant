@@ -6,7 +6,7 @@ use restaurant\restaurant\Models\ResTable;
 use restaurant\restaurant\Models\ResTax;
 use restaurant\restaurant\Models\ResProduct;
 use restaurant\restaurant\Models\ResOrder;
-
+use Carbon\Carbon;
 
 class ResProductController extends ResProductBaseController
 {
@@ -24,9 +24,10 @@ class ResProductController extends ResProductBaseController
 
     public function productOrderList()
     {
-        $resOrders = ResOrder::orderBy('id', 'desc')->get();
+        $resOrders = ResOrder::where('created_at', '>=', Carbon::now()->subDays(1))
+        ->orderBy('id', 'desc')
+        ->get();
         $resProducts = ResProduct::with('category')->get();
-        // dd($resOrders);
         return view('restaurant::user_interface.product-order-list', compact('resOrders','resProducts'));
     }
 }
