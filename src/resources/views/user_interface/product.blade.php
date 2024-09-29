@@ -148,13 +148,13 @@
                                             <div class="col-md-2 productToAdd" style="position: relative;"
                                                 data-productId="{{ $product->id }}" data-category="{{ $key }}">
                                                 <div
-                                                    style="position: absolute; top:90px; right:14px; border:1px solid white;  background-color:#F95353; color:white; padding:8px; z-index:500; border-radius:50%;">
+                                                    style="position: absolute; top:90px; right:14px; border:1px solid white;  background-color:#F95353; color:white; padding:8px; z-index:500; border-radius:50%; cursor:pointer;">
                                                     <b class="price" style="font-size: 10px;">${{ $product->price }}</b>
                                                 </div>
                                                 <div class="card">
-                                                    <img class="card-img-top img-fluid" style="height:140px;"
+                                                    <img class="card-img-top img-fluid" style="height:140px; cursor:pointer;"
                                                         src="{{ asset('storage/' . $product->image) }}" alt="">
-                                                    <div class="card-body" style="padding: .75rem;">
+                                                    <div class="card-body" style="padding: .75rem; cursor:pointer;">
                                                         <h5 class="card-title search-title"
                                                             style="margin-bottom: 0; font-size:12px;">
                                                             <b>{{ $product->name }}</b>
@@ -182,6 +182,12 @@
                                         </div>
                                     </div>
                                     <div class="card-body cart-section-body">
+                                        <img 
+                                            id="sampleImgOnCart"
+                                            src="https://media.istockphoto.com/id/1479739680/vector/customer-and-waiter-in-restaurant-cartoon-vector.jpg?s=612x612&w=0&k=20&c=f_TbSMXDKqc9oDMNXeYDWzmB509e4oGcLCiVWKVndE8="
+                                            alt=""
+                                            style="width:100%;"
+                                            >
                                         <div id="tableoverlay">
                                             <div class="table-spinner">
                                                 <div class="tableloader"></div>
@@ -191,7 +197,6 @@
                                         <div class="cart-items"></div>
 
                                         <!-- Taxes section -->
-                                        <hr>
                                         <div class="taxes mt-4">
                                             @foreach ($resTaxes as $tax)
                                             <div class="d-flex justify-content-between align-items-center tax-item"
@@ -372,7 +377,7 @@
         });
 
         function addToCart() {
-            
+            $('#sampleImgOnCart').hide();
             const productId = $(this).data('productid'); 
             const productName = $(this).find('.search-title b').text(); 
             const productPrice = parseFloat($(this).find('.price').text().replace('$', '')); 
@@ -414,6 +419,14 @@
         $(document).on('click', '.delete-item', function() {
             $(this).closest('.cart-item').remove();
             updateTotalPrice(); 
+                if ($('.cart-item').length === 0) {
+                    // If no cart items, show the image
+                    $('#sampleImgOnCart').show();
+                } else {
+                    // If there are cart items, hide the image
+                    $('#sampleImgOnCart').hide();
+                }
+
         });
 
         $(document).on('click', '.qty-plus, .qty-minus', function() {
@@ -499,6 +512,8 @@
                     getTotalBills();
                     getTotalUnpaidBills();
                     getTotalAvailableTables();
+                    
+                    $('#sampleImgOnCart').show();
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);

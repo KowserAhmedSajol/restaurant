@@ -141,7 +141,7 @@ class ResBillingApiController extends ResBillingApiBaseController
 
     public function getTotalBills()
     {
-        $totalBillsToday = ResBilling::whereDate('created_at', now()->toDateString())->count();
+        $totalBillsToday = ResOrder::whereDate('created_at', now()->toDateString())->count();
 
         return response()->json([
             'totalBills' => $totalBillsToday
