@@ -1,60 +1,103 @@
 <x-smart-master>
     <div class="row">
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-blue-400 has-bg-image">
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0">54,390</h3>
-                        <span class="text-uppercase font-size-xs">total comments</span>
-                    </div>
-
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-bubbles4 icon-3x opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-danger-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body">
-                        <h3 class="mb-0">389,438</h3>
+                        <h3 class="mb-0" id="totalOrders">0</h3>
                         <span class="text-uppercase font-size-xs">total orders</span>
                     </div>
 
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-bag icon-3x opacity-75"></i>
+                    <div class="image-container"
+                        style="position: absolute; bottom: 0; right: 0; transform: translate(20%, 20%) rotate(-45deg);">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2649/2649223.png" alt="Total Bills"
+                            class="icon-3x" style="opacity: 0.75; width: 3em; height: 3em;">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-success-400 has-bg-image">
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body has-bg-image" style="position: relative; overflow: hidden; background-color: #26a69a;">
                 <div class="media">
-                    <div class="mr-3 align-self-center">
-                        <i class="icon-pointer icon-3x opacity-75"></i>
+                    <div class="media-body">
+                        <h3 class="mb-0" id="totalBills">0</h3>
+                        <span class="text-uppercase font-size-xs">total bills</span>
+                    </div>
+                </div>
+
+                <div class="image-container"
+                    style="position: absolute; bottom: 0; right: 0; transform: translate(30%, 30%) rotate(-45deg);">
+                    <img src="https://static.thenounproject.com/png/3263003-200.png" alt="Total Bills" class="icon-3x"
+                        style="opacity: 0.75; width: 3em; height: 3em;">
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body bg-orange-400 has-bg-image" style="position: relative; overflow: hidden;">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0" id="totalPaidBills">0</h3>
+                        <span class="text-uppercase font-size-xs">total paid bills</span>
+                    </div>
+                </div>
+
+                <div class="image-container"
+                    style="position: absolute; bottom: 0; right: 0; transform: translate(20%, 20%) rotate(-45deg);">
+                    <img src="https://cdn-icons-png.freepik.com/512/4272/4272841.png" alt="Total Bills" class="icon-3x"
+                        style="opacity: 0.75; width: 3em; height: 3em;">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0" id="totalUnpaidBills">0</h3>
+                        <span class="text-uppercase font-size-xs">total unpaid bills</span>
                     </div>
 
-                    <div class="media-body text-right">
-                        <h3 class="mb-0">652,549</h3>
-                        <span class="text-uppercase font-size-xs">total clicks</span>
+                    <div class="image-container"
+                        style="position: absolute; bottom: 0; right: 0; transform: translate(20%, 20%) rotate(-45deg);">
+                        <img src="https://cdn2.iconfinder.com/data/icons/prohibited-forbidden-signs/100/Prohibited-05-512.png" alt="Total Bills"
+                            class="icon-3x" style="opacity: 0.75; width: 3em; height: 3em;">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-indigo-400 has-bg-image">
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body bg-success-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
-                    <div class="mr-3 align-self-center">
-                        <i class="icon-enter6 icon-3x opacity-75"></i>
+                    <div class="media-body">
+                        <h3 class="mb-0" id="totalAmountSold">0</h3>
+                        <span class="text-uppercase font-size-xs">total amount sold</span>
+                    </div>
+                </div>
+
+                <div class="image-container"
+                    style="position: absolute; bottom: 0; right: 0; transform: translate(30%, 30%) rotate(-45deg);">
+                    <img src="https://cdn-icons-png.flaticon.com/512/10384/10384161.png" alt="Total Bills" class="icon-3x"
+                        style="opacity: 0.75; width: 3em; height: 3em;">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-2">
+            <div class="card card-body bg-info-400 has-bg-image" style="position: relative; overflow: hidden;">
+                <div class="media">
+                    <div class="media-body">
+                        <h3 class="mb-0" id="availableTables">0</h3>
+                        <span class="text-uppercase font-size-xs">available tables</span>
                     </div>
 
-                    <div class="media-body text-right">
-                        <h3 class="mb-0">245,382</h3>
-                        <span class="text-uppercase font-size-xs">total visits</span>
+                    <div class="image-container"
+                        style="position: absolute; bottom: 0; right: 0; transform: translate(20%, 20%) rotate(-45deg);">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1663/1663945.png" alt="Total Bills"
+                            class="icon-3x" style="opacity: 0.75; width: 2em; height: 2em;">
                     </div>
                 </div>
             </div>
@@ -71,14 +114,16 @@
 
             <div class=" card card-body">
                 <ul class="nav nav-tabs nav-tabs-solid nav-justified border-0">
-                    <li class="nav-item"><a href="#solid-justified-tab1" class="nav-link active" data-toggle="tab">Order Section</a></li>
-                    <li class="nav-item"><a href="#solid-justified-tab2" class="nav-link" data-toggle="tab">Payment Section</a></li>
+                    <li class="nav-item"><a href="#solid-justified-tab1" class="nav-link active" data-toggle="tab">Order
+                            Section</a></li>
+                    <li class="nav-item"><a href="#solid-justified-tab2" class="nav-link" data-toggle="tab">Payment
+                            Section</a></li>
                 </ul>
 
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="solid-justified-tab1">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="card">
                                     <div class="card-header header-elements-inline">
                                         <h6 class="card-title"><b style="font-size: 20px">Products</b></h6>
@@ -88,9 +133,10 @@
                                             </div>
                                         </div>
                                     </div>
-                    
+
                                     <div class="card-body" style="min-height:1000px;">
-                                        <x-smart-text class="mb-2" type="text" id="qtyInput" name="search" placeholder="Search Product" />
+                                        <x-smart-text class="mb-2" type="text" id="qtyInput" name="search"
+                                            placeholder="Search Product" />
                                         <div class="row" id="product-list">
                                             @foreach ($products as $key => $resProduct)
                                             <div class="col-md-12">
@@ -109,7 +155,8 @@
                                                     <img class="card-img-top img-fluid" style="height:140px;"
                                                         src="{{ asset('storage/' . $product->image) }}" alt="">
                                                     <div class="card-body" style="padding: .75rem;">
-                                                        <h5 class="card-title search-title" style="margin-bottom: 0; font-size:12px;">
+                                                        <h5 class="card-title search-title"
+                                                            style="margin-bottom: 0; font-size:12px;">
                                                             <b>{{ $product->name }}</b>
                                                         </h5>
                                                     </div>
@@ -119,12 +166,12 @@
                                             @endforeach
                                         </div>
                                     </div>
-                    
-                    
-                    
+
+
+
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-header header-elements-inline">
                                         <h6 class="card-title"><b style="font-size: 20px">Order Status</b></h6>
@@ -142,7 +189,7 @@
                                         </div>
                                         <!-- Cart items will be added here dynamically -->
                                         <div class="cart-items"></div>
-                    
+
                                         <!-- Taxes section -->
                                         <hr>
                                         <div class="taxes mt-4">
@@ -154,7 +201,7 @@
                                             </div>
                                             @endforeach
                                         </div>
-                    
+
                                         <!-- Total Price section -->
                                         <div class="total-price mt-4">
                                             <div class="d-flex justify-content-between align-items-center">
@@ -164,7 +211,8 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-primary legitRipple" id="confirmOrder"
-                                                style="width:100%;"><i class="fas fa-check-circle mr-2"></i> Confirm Order</button>
+                                                style="width:100%;"><i class="fas fa-check-circle mr-2"></i> Confirm
+                                                Order</button>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +234,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                    
+
                                         <table class="table datatable-basic table-bordered">
                                             <thead>
                                                 <tr>
@@ -203,7 +251,8 @@
                                             </thead>
                                             <tbody id="orderTbody">
                                                 @foreach ($resOrders as $order)
-                                                <tr style="cursor:pointer;" class="order-row" data-id="{{ $order->id }}">
+                                                <tr style="cursor:pointer;" class="order-row"
+                                                    data-id="{{ $order->id }}">
                                                     <td class="text-center">{{ $order->order_no }}</td>
                                                     <td class="text-center">{{ $order->token_no }}</td>
                                                     <td class="text-center">{{ $order->res_table_title }}</td>
@@ -270,15 +319,17 @@
                                     </div>
                                     <div class="text-center mb-2"
                                         style="width: 98%; margin: auto; display: flex; justify-content: space-between;">
-                                        <button type="button" class="btn btn-info legitRipple" id="updateOrder" style="flex: 1; margin-right: 5px;">
+                                        <button type="button" class="btn btn-info legitRipple" id="updateOrder"
+                                            style="flex: 1; margin-right: 5px;">
                                             <i class="icon-pen-plus mr-2"></i> Update Order
                                         </button>
-                                        <button type="button" class="btn btn-success legitRipple" id="orderPayment" style="flex: 1; margin-left: 5px;">
+                                        <button type="button" class="btn btn-success legitRipple" id="orderPayment"
+                                            style="flex: 1; margin-left: 5px;">
                                             <i class="icon-credit-card2 mr-2"></i> Proceed To Payment
                                         </button>
                                     </div>
                                 </div>
-                    
+
                             </div>
                         </div>
                     </div>
@@ -444,6 +495,10 @@
                     $('.order-row').on('click', orderRowClick);
                     $('#orderTbody tr').first().click();
                     $("#tableoverlay").fadeOut(300);
+                    getTotalOrders();
+                    getTotalBills();
+                    getTotalUnpaidBills();
+                    getTotalAvailableTables();
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -527,9 +582,18 @@
         let globalResTaxes; 
 
         $(document).ready(function() {
+
+            getTotalOrders();
+            getTotalBills();
+            getTotalPaidBills();
+            getTotalUnpaidBills();
+            getTotalAvailableTables();
+            getTotalAmountSold();
+
+
+
             $('#updateOrder').on('click', updateOrder);
             $('#orderPayment').on('click', orderPayment);
-            $('.sidebar-control').click();
             $('.order-row').on('click', orderRowClick);
             $(document).on('click', '.add-row-button', function() {
                 addNewRow();
@@ -539,6 +603,115 @@
                 updateTotals(globalResTaxes); 
             });
         });
+
+        function getTotalAmountSold() {
+            $.ajax({
+                url: '/api/get-total-amount-sold',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    $('#totalAmountSold').text('$' + response.totalAmountSold.toFixed(2));
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
+
+        function getTotalAvailableTables() {
+            $.ajax({
+                url: '/api/get-total-available-tables',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    $('#availableTables').text(response.availableTables);
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
+
+        function getTotalPaidBills() {
+            $.ajax({
+                url: '/api/get-total-paid-bills',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    $('#totalPaidBills').text(response.totalPaidBills);
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
+
+        function getTotalUnpaidBills() {
+            $.ajax({
+                url: '/api/get-total-unpaid-bills',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    $('#totalUnpaidBills').text(response.totalUnpaidBills);
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
+
+        function getTotalBills() {
+            $.ajax({
+                url: '/api/get-total-bills',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    // Assuming the response contains 'totalOrders'
+                    $('#totalBills').text(response.totalBills);
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
+        function getTotalOrders() {
+            $.ajax({
+                url: '/api/get-total-orders',  // This is the endpoint for the GET request
+                method: 'GET',             // GET request method
+                success: function(response) {
+                    // Assuming the response contains 'totalOrders'
+                    $('#totalOrders').text(response.totalOrders);
+                },
+                error: function(error) {
+                    console.error("Error fetching total orders:", error);
+                    if (error.responseJSON && error.responseJSON.message) {
+                        alert('Error: ' + error.responseJSON.message);
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        }
 
         function orderRowClick() {
             $('.order-row').removeClass('active-row');
@@ -628,6 +801,13 @@
                     }
                     loadOrderItem(response.orderId);
                     fetchTables();
+
+                    getTotalOrders();
+                    getTotalBills();
+                    getTotalPaidBills();
+                    getTotalUnpaidBills();
+                    getTotalAvailableTables();
+                    getTotalAmountSold();
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -951,7 +1131,7 @@
     @endpush
 
 
-    
+
 
 
 

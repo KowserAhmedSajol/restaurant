@@ -13,4 +13,13 @@ class ResTableApiController extends ResTableApiBaseController
 
         return response()->json($tables);
     }
+
+    public function getTotalAvailableTables()
+    {
+        $availableTables = ResTable::where('is_occupied',0)->where('status', 1)->count();
+
+        return response()->json([
+            'availableTables' => $availableTables
+        ]);
+    }
 }

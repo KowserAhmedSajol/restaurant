@@ -26,5 +26,12 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::post('/update-order-item', [ResOrderItemApiController::class, 'updateOrderItem']);
         Route::post('/order-payment', [ResBillingApiController::class, 'orderPayment']);
 
+        Route::get('/get-total-orders', [ResOrderApiController::class, 'getTotalOrders']);
+        Route::get('/get-total-bills', [ResBillingApiController::class, 'getTotalBills']);
+        Route::get('/get-total-paid-bills', [ResBillingApiController::class, 'getTotalPaidBills']);
+        Route::get('/get-total-unpaid-bills', [ResBillingApiController::class, 'getTotalUnpaidBills']);
+        Route::get('/get-total-available-tables', [ResTableApiController::class, 'getTotalAvailableTables']);
+        Route::get('/get-total-amount-sold', [ResBillingApiController::class, 'getTotalAmountSold']);
+
     });
 });

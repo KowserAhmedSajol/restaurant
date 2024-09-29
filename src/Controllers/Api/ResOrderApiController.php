@@ -95,5 +95,14 @@ class ResOrderApiController extends ResOrderApiBaseController
         return $companyPrefix . '_' . $date . '_' . $tokenNo;
     }
 
+    public function getTotalOrders()
+    {
+        $totalOrdersToday = ResOrder::whereDate('created_at', now()->toDateString())->count();
+
+        return response()->json([
+            'totalOrders' => $totalOrdersToday
+        ]);
+    }
+
 
 }

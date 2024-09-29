@@ -117,4 +117,45 @@ class ResBillingApiController extends ResBillingApiBaseController
             'status' => $resOrder->status,
         ]);
     }
+
+
+    public function getTotalPaidBills()
+    {
+        $totalPaidBills = ResBilling::where('status','Paid')->whereDate('created_at', now()->toDateString())->count();
+
+        return response()->json([
+            'totalPaidBills' => $totalPaidBills
+        ]);
+    }
+
+
+    public function getTotalUnpaidBills()
+    {
+        $totalUnpaidBills = ResOrder::where('status','Ordered')->whereDate('created_at', now()->toDateString())->count();
+
+        return response()->json([
+            'totalUnpaidBills' => $totalUnpaidBills
+        ]);
+    }
+
+
+    public function getTotalBills()
+    {
+        $totalBillsToday = ResBilling::whereDate('created_at', now()->toDateString())->count();
+
+        return response()->json([
+            'totalBills' => $totalBillsToday
+        ]);
+    }
+
+    public function getTotalAmountSold()
+    {
+        $totalAmountSold = ResBilling::where('status', 'Paid')
+        ->whereDate('created_at', now()->toDateString())
+        ->sum('total_amount');
+
+        return response()->json([
+            'totalAmountSold' => $totalAmountSold
+        ]);
+    }
 }

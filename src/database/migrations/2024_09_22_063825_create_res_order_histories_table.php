@@ -12,17 +12,17 @@ class CreateResOrderHistoriesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->unsignedBigInteger('res_order_id')->nullable();
-            $table->unsignedBigInteger('res_category_id');
-$table->string('res_category_uuid', '36');
-$table->string('res_category_title', '255');
-$table->unsignedBigInteger('res_product_id');
-$table->string('res_product_uuid', '36');
-$table->string('res_product_title', '255');
-$table->string('order_no');
-$table->date('order_date');
-$table->integer('total_qty');
-$table->string('status')->default(0);
-$table->time('order_time');
+            $table->unsignedBigInteger('res_category_id')->nullable();
+            $table->string('res_category_uuid', '36')->nullable();
+            $table->string('res_category_title', '255')->nullable();
+            $table->unsignedBigInteger('res_product_id')->nullable();
+            $table->string('res_product_uuid', '36')->nullable();
+            $table->string('res_product_title', '255')->nullable();
+            $table->string('order_no');
+            $table->date('order_date');
+            $table->integer('total_qty');
+            $table->string('status')->default(0);
+            $table->time('order_time');
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
