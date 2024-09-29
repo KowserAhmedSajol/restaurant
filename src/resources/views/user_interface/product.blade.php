@@ -4,7 +4,7 @@
             <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="totalOrders">0</h3>
+                        <h3 class="mb-0" style="font-weight:bold;" id="totalOrders">0</h3>
                         <span class="text-uppercase font-size-xs">total orders</span>
                     </div>
 
@@ -21,7 +21,7 @@
             <div class="card card-body has-bg-image" style="position: relative; overflow: hidden; background-color: #26a69a;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="totalBills">0</h3>
+                        <h3 class="mb-0" id="totalBills" style="font-weight:bold;">0</h3>
                         <span class="text-uppercase font-size-xs">total bills</span>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
             <div class="card card-body bg-orange-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="totalPaidBills">0</h3>
+                        <h3 class="mb-0" id="totalPaidBills" style="font-weight:bold;">0</h3>
                         <span class="text-uppercase font-size-xs">total paid bills</span>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="totalUnpaidBills">0</h3>
+                        <h3 class="mb-0" id="totalUnpaidBills" style="font-weight:bold;">0</h3>
                         <span class="text-uppercase font-size-xs">total unpaid bills</span>
                     </div>
 
@@ -73,7 +73,7 @@
             <div class="card card-body bg-success-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="totalAmountSold">0</h3>
+                        <h3 class="mb-0" id="totalAmountSold" style="font-weight:bold;">0</h3>
                         <span class="text-uppercase font-size-xs">total amount sold</span>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
             <div class="card card-body bg-info-400 has-bg-image" style="position: relative; overflow: hidden;">
                 <div class="media">
                     <div class="media-body">
-                        <h3 class="mb-0" id="availableTables">0</h3>
+                        <h3 class="mb-0" id="availableTables" style="font-weight:bold;">0</h3>
                         <span class="text-uppercase font-size-xs">available tables</span>
                     </div>
 
@@ -215,8 +215,8 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-primary legitRipple" id="confirmOrder"
-                                                style="width:100%;"><i class="fas fa-check-circle mr-2"></i> Confirm
+                                            <button type="button" class="btn legitRipple" id="confirmOrder"
+                                                style="width:100%; background-color:#26A69A; color:white;"><i class="fas fa-check-circle mr-2"></i> Confirm
                                                 Order</button>
                                         </div>
                                     </div>
@@ -1262,7 +1262,7 @@
         }
 
         .product-list-title u {
-            text-decoration-color: #ff5722;
+            text-decoration-color: #26A69A;
             /* Custom underline color */
             text-decoration-thickness: 2px;
             /* Makes the underline thicker */
@@ -1328,9 +1328,9 @@
         }
 
         label.btn.active {
-            background-color: #007bff;
+            background-color: #26A69A;
             color: #fff;
-            border-color: #007bff;
+            border-color: #26A69A;
         }
 
         label.btn {
