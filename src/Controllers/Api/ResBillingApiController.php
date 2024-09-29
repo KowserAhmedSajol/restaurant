@@ -15,7 +15,21 @@ class ResBillingApiController extends ResBillingApiBaseController
 {
     public function orderPayment(Request $request)
     {
+        // dd($request->paymentData['paymentMethod']);
         $resOrder = ResOrder::find($request->orderId);
+        if (!$resOrder) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Order not found.'
+            ], 404);
+        }
+        if ($resOrder->status == 'Paid') {
+            return response()->json([
+                'error' => true,
+                'message' => 'This order has already been paid.'
+            ], 400); // 400 Bad Request
+        }
+
         foreach ($request->orderItems as $key => $order_item) {
             if ($order_item['id'] == '0') {
                 $resProduct = ResProduct::find($order_item['productId']);
@@ -77,7 +91,13 @@ class ResBillingApiController extends ResBillingApiBaseController
             'res_table_title' => $resOrder->res_table_title,
             'status' => 'Paid',
             'date' => now()->format('Y-m-d'),
-            'time' => now()->format('H:i:s') 
+            'time' => now()->format('H:i:s'),
+            'payment_type' => $request->paymentData['paymentMethod'],
+            'phone_number' => $request->paymentData['phoneNumber'],
+            'transaction_id' => $request->paymentData['transactionId'],
+            'total_amount' => $totalAmount,
+            'received_amount' => $request->paymentData['receivedAmount'],
+            'returned_amount' => $request->paymentData['returnAmount'],
         ]);
 
         $resOrder->update([

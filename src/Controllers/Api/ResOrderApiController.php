@@ -75,6 +75,7 @@ class ResOrderApiController extends ResOrderApiBaseController
 
         return response()->json([
             'status' => true,
+            'data'  => $res_order,
             'message' => 'Order Created Successfully'
         ], 200);
         

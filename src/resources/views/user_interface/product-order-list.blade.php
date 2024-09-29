@@ -30,7 +30,7 @@
                         </thead>
                         <tbody id="orderTbody">
                             @foreach ($resOrders as $order)
-                            <tr class="order-row" data-id="{{ $order->id }}">
+                            <tr style="cursor:pointer;" class="order-row" data-id="{{ $order->id }}">
                                 <td class="text-center">{{ $order->order_no }}</td>
                                 <td class="text-center">{{ $order->token_no }}</td>
                                 <td class="text-center">{{ $order->res_table_title }}</td>

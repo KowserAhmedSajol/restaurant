@@ -15,11 +15,15 @@ class ResProductController extends ResProductBaseController
     {
         $resProducts = ResProduct::with('category')->get(); // Assuming 'category' is the relation
         $resTaxes = ResTax::where('status',1)->get();
-        $resProducts = $resProducts->groupBy('res_category_title');
+        $products = $resProducts->groupBy('res_category_title');
 
         // dd($resProducts);
         $resTables = ResTable::where('status',1)->get();
-        return view('restaurant::user_interface.product',compact('resTables','resProducts','resTaxes'));
+        $resOrders = ResOrder::where('created_at', '>=', Carbon::now()->subDays(1))
+        ->orderBy('id', 'desc')
+        ->get();
+        $resProducts = ResProduct::with('category')->get();
+        return view('restaurant::user_interface.product',compact('resTables','resTaxes','resOrders','resProducts','products'));
     }
 
     public function productOrderList()
