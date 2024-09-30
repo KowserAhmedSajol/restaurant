@@ -11,6 +11,7 @@ use restaurant\restaurant\Models\ResProduct;
 use restaurant\restaurant\Models\ResTable;
 use Illuminate\Support\Facades\DB;
 use restaurant\restaurant\Models\ResTax;
+use Mpdf\Mpdf;
 
 class ResOrderApiController extends ResOrderApiBaseController
 {

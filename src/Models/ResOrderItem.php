@@ -41,6 +41,11 @@ public function resProducts(): HasMany
     return $this->hasMany(ResProduct::class, 'ResProduct_id');
 }
 
+public function order(): BelongsTo
+{
+    return $this->belongsTo(ResOrder::class, 'res_order_id');
+}
+
 
     
 

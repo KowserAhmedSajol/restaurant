@@ -8,6 +8,7 @@ use restaurant\restaurant\Controllers\ResProductController;
 use restaurant\restaurant\Controllers\ResTaxController;
 use restaurant\restaurant\Controllers\ResTableController;
 use restaurant\restaurant\Controllers\ResCategoryController;
+use restaurant\restaurant\Controllers\PdfController;
 
 
 Route::middleware(['web', 'auth'])->group(function () {
@@ -21,5 +22,6 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/product-order', [ResProductController::class, 'product']);
     Route::get('/product-order-list', [ResProductController::class, 'productOrderList']);
+    Route::get('/generate-thermal-receipt/{id}', [PdfController::class, 'generateThermalReceipt']);
 
 });

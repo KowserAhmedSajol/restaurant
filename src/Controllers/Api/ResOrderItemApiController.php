@@ -15,7 +15,7 @@ class ResOrderItemApiController extends ResOrderItemApiBaseController
     public function loadOrderItem(Request $request)
     {
         // dd($request->orderId);
-        $orderItems = ResOrderItem::where('res_order_id',$request->orderId)->get();
+        $orderItems = ResOrderItem::with('order')->where('res_order_id',$request->orderId)->get();
         $resTaxes = ResTax::where('status',1)->get();
         return response()->json([
             'status' => true,

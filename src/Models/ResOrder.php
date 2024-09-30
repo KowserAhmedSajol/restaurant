@@ -41,9 +41,9 @@ public function resProducts(): HasMany
     return $this->hasMany(ResProduct::class, 'ResProduct_id');
 }
 
-public function resOrderItem(): BelongsTo
+public function resOrderItems(): HasMany
 {
-    return $this->belongsTo(ResOrderItem::class, 'ResOrderItem_id');
+    return $this->hasMany(ResOrderItem::class, 'Res_order_id');
 }
 public function resBilling(): BelongsTo
 {

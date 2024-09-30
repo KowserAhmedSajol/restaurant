@@ -1,7 +1,7 @@
 <x-smart-master>
     <div class="row">
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
+            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" style="font-weight:bold;" id="totalOrders">0</h3>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body has-bg-image" style="position: relative; overflow: hidden; background-color: #26a69a;">
+            <div class="card card-body has-bg-image" style="position: relative; overflow: hidden; background-color: #26a69a; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalBills" style="font-weight:bold;">0</h3>
@@ -36,7 +36,7 @@
         
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-orange-400 has-bg-image" style="position: relative; overflow: hidden;">
+            <div class="card card-body bg-orange-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalPaidBills" style="font-weight:bold;">0</h3>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden;">
+            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalUnpaidBills" style="font-weight:bold;">0</h3>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-success-400 has-bg-image" style="position: relative; overflow: hidden;">
+            <div class="card card-body bg-success-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalAmountSold" style="font-weight:bold;">0</h3>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-info-400 has-bg-image" style="position: relative; overflow: hidden;">
+            <div class="card card-body bg-info-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="availableTables" style="font-weight:bold;">0</h3>
@@ -216,7 +216,7 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn legitRipple" id="confirmOrder"
-                                                style="width:100%; background-color:#26A69A; color:white;"><i class="fas fa-check-circle mr-2"></i> Confirm
+                                                style="width:100%; background-color:#059711; color:white;"><i class="fas fa-check-circle mr-2"></i> Confirm
                                                 Order</button>
                                         </div>
                                     </div>
@@ -348,8 +348,14 @@
 
     @push('js')
     {{-- page-specific-js --}}
+    
+    <script src="{{ asset('js/alerts.js') }}" defer></script>
     <script>
         $(document).ready(function() {
+            showAlert('success', 'change Your changes have been saved successfully!');
+            // console.log('ds');
+            
+            
             fetchTables();
             $('.productToAdd').on('click', addToCart);
             $('#confirmOrder').on('click', confirmOrder);
@@ -514,6 +520,9 @@
                     getTotalAvailableTables();
                     
                     $('#sampleImgOnCart').show();
+                    console.log(response.data.id);
+                    
+                    window.open('/generate-thermal-receipt/'+response.data.id, '_blank');
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -886,6 +895,7 @@
                     orderRow.find('.total_amount').text(`$${parseFloat(response.total_amount).toFixed(2)}`);
 
                     loadOrderItem(response.orderId)
+                    window.open('/generate-thermal-receipt/'+response.orderId, '_blank');
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -908,11 +918,11 @@
                     let orderTableBody = $('#orderTableBody');
                     orderTableBody.empty();
                     orderTableBody.find('tr.extraNewRow').remove(); // Clear any existing new rows
-
+                    let status = '';
                     // Populate the order items
                     $.each(response.data, function(index, item) {
-
                         
+                        status = item.order.status;
                         let row = `
                             <tr data-orderItemId="${item.id}">
                                 <td>${index + 1}</td>
@@ -998,6 +1008,13 @@
                         $('.returnAmount').text(`$ ${returnAmount.toFixed(2)}`);
                     });
                     $('.paymentMethod').on('change', handlePaymentMethodChange);
+                    if(status == "Paid")
+                    {
+                        $('#updateOrder').prop('disabled', true);
+                    }else if (status == "Ordered"){
+                        $('#updateOrder').prop('disabled', false);
+                    }
+                    
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -1151,8 +1168,14 @@
 
 
     @push('css')
+    
+    <link rel="stylesheet" href="{{ asset('css/alerts.css') }}">
     {{-- page-specific-css --}}
     <style>
+        .nav-tabs-solid .nav-item.show .nav-link.active, .nav-tabs-solid .nav-link.active {
+            color: #fff;
+            background-color: #059711;
+        }
         /* HTML: <div class="loader"></div> */
         .cart-section-body {
             position: relative;
@@ -1328,9 +1351,9 @@
         }
 
         label.btn.active {
-            background-color: #26A69A;
+            background-color: #059711;
             color: #fff;
-            border-color: #26A69A;
+            border-color: #059711;
         }
 
         label.btn {
