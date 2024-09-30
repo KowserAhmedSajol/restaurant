@@ -1253,7 +1253,7 @@
             /* Underlines the text */
             color: #333;
             /* Changes text color, you can adjust */
-            text-align: center;
+            /* text-align: center; */
             /* Centers the text */
             margin: 10px 0;
             /* Adds some spacing around */
