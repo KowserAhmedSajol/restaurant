@@ -349,10 +349,9 @@
     @push('js')
     {{-- page-specific-js --}}
     
-    <script src="{{ asset('js/alerts.js') }}" defer></script>
     <script>
         $(document).ready(function() {
-            showAlert('success', 'change Your changes have been saved successfully!');
+            //showAlert('success', 'change Your changes have been sa/ved successfully!');
             // console.log('ds');
             
             
@@ -1169,7 +1168,6 @@
 
     @push('css')
     
-    <link rel="stylesheet" href="{{ asset('css/alerts.css') }}">
     {{-- page-specific-css --}}
     <style>
         .nav-tabs-solid .nav-item.show .nav-link.active, .nav-tabs-solid .nav-link.active {
