@@ -1,7 +1,8 @@
 <x-smart-master>
     <div class="row">
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
+            <div class="card card-body bg-blue-400 has-bg-image"
+                style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" style="font-weight:bold;" id="totalOrders">0</h3>
@@ -18,7 +19,8 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body has-bg-image" style="position: relative; overflow: hidden; background-color: #26a69a; cursor:pointer">
+            <div class="card card-body has-bg-image"
+                style="position: relative; overflow: hidden; background-color: #26a69a; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalBills" style="font-weight:bold;">0</h3>
@@ -33,10 +35,11 @@
                 </div>
             </div>
         </div>
-        
+
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-orange-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
+            <div class="card card-body bg-orange-400 has-bg-image"
+                style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalPaidBills" style="font-weight:bold;">0</h3>
@@ -53,7 +56,8 @@
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-blue-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
+            <div class="card card-body bg-blue-400 has-bg-image"
+                style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalUnpaidBills" style="font-weight:bold;">0</h3>
@@ -62,15 +66,16 @@
 
                     <div class="image-container"
                         style="position: absolute; bottom: 0; right: 0; transform: translate(20%, 20%) rotate(-45deg);">
-                        <img src="https://cdn2.iconfinder.com/data/icons/prohibited-forbidden-signs/100/Prohibited-05-512.png" alt="Total Bills"
-                            class="icon-3x" style="opacity: 0.75; width: 3em; height: 3em;">
+                        <img src="https://cdn2.iconfinder.com/data/icons/prohibited-forbidden-signs/100/Prohibited-05-512.png"
+                            alt="Total Bills" class="icon-3x" style="opacity: 0.75; width: 3em; height: 3em;">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-success-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
+            <div class="card card-body bg-success-400 has-bg-image"
+                style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="totalAmountSold" style="font-weight:bold;">0</h3>
@@ -80,14 +85,15 @@
 
                 <div class="image-container"
                     style="position: absolute; bottom: 0; right: 0; transform: translate(30%, 30%) rotate(-45deg);">
-                    <img src="https://cdn-icons-png.flaticon.com/512/10384/10384161.png" alt="Total Bills" class="icon-3x"
-                        style="opacity: 0.75; width: 3em; height: 3em;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/10384/10384161.png" alt="Total Bills"
+                        class="icon-3x" style="opacity: 0.75; width: 3em; height: 3em;">
                 </div>
             </div>
         </div>
 
         <div class="col-sm-6 col-xl-2">
-            <div class="card card-body bg-info-400 has-bg-image" style="position: relative; overflow: hidden; cursor:pointer">
+            <div class="card card-body bg-info-400 has-bg-image"
+                style="position: relative; overflow: hidden; cursor:pointer">
                 <div class="media">
                     <div class="media-body">
                         <h3 class="mb-0" id="availableTables" style="font-weight:bold;">0</h3>
@@ -145,19 +151,20 @@
                                                 </h5>
                                             </div>
                                             @foreach ($resProduct as $product)
-                                            <div class="col-md-2 productToAdd" style="position: relative;"
-                                                data-productId="{{ $product->id }}" data-category="{{ $key }}">
+                                            <div class="col-md-2 productToAdd" style="position: relative;" data-productId="{{ $product->id }}" data-category="{{ $key }}" data-combo="{{ $product->comboProducts }}" data-namefull="{{ $product->name }}">
                                                 <div
                                                     style="position: absolute; top:90px; right:14px; border:1px solid white;  background-color:#F95353; color:white; padding:8px; z-index:500; border-radius:50%; cursor:pointer;">
                                                     <b class="price" style="font-size: 10px;">${{ $product->price }}</b>
                                                 </div>
                                                 <div class="card">
-                                                    <img class="card-img-top img-fluid" style="height:140px; cursor:pointer;"
+                                                    <img class="card-img-top img-fluid"
+                                                        style="height:140px; cursor:pointer;"
                                                         src="{{ asset('storage/' . $product->image) }}" alt="">
-                                                    <div class="card-body" style="padding: .75rem; cursor:pointer;">
+                                                    <div class="card-body" style="padding: .75rem; cursor:pointer;" data-popup="tooltip" title="" data-placement="right" data-original-title="{{ $product->name }}" aria-describedby="tooltip379665">
                                                         <h5 class="card-title search-title"
                                                             style="margin-bottom: 0; font-size:12px;">
-                                                            <b>{{ $product->name }}</b>
+                                                            <b>{{ Str::limit($product->name, 25, '...') }}</b>
+                                                            {{-- <button type="button" class="btn btn-primary legitRipple" data-popup="tooltip" title="" data-placement="right" data-original-title="Right tooltip" aria-describedby="tooltip379665">Tooltip <i class="icon-play3 ml-2"></i></button> --}}
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -166,9 +173,6 @@
                                             @endforeach
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -182,19 +186,19 @@
                                         </div>
                                     </div>
                                     <div class="card-body cart-section-body">
-                                        <img 
-                                            id="sampleImgOnCart"
+                                        <img id="sampleImgOnCart"
                                             src="https://media.istockphoto.com/id/1479739680/vector/customer-and-waiter-in-restaurant-cartoon-vector.jpg?s=612x612&w=0&k=20&c=f_TbSMXDKqc9oDMNXeYDWzmB509e4oGcLCiVWKVndE8="
-                                            alt=""
-                                            style="width:100%;"
-                                            >
+                                            alt="" style="width:100%;">
                                         <div id="tableoverlay">
                                             <div class="table-spinner">
                                                 <div class="tableloader"></div>
                                             </div>
                                         </div>
                                         <!-- Cart items will be added here dynamically -->
-                                        <div class="cart-items"></div>
+                                        <div class="">
+                                            <ul class="media-list media-list-linked cart-items">
+                                            </ul>
+                                        </div>
 
                                         <!-- Taxes section -->
                                         <div class="taxes mt-4">
@@ -216,7 +220,8 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn legitRipple" id="confirmOrder"
-                                                style="width:100%; background-color:#059711; color:white;"><i class="fas fa-check-circle mr-2"></i> Confirm
+                                                style="width:100%; background-color:#059711; color:white;"><i
+                                                    class="fas fa-check-circle mr-2"></i> Confirm
                                                 Order</button>
                                         </div>
                                     </div>
@@ -343,16 +348,14 @@
 
         </div>
     </div>
-
+    
 
 
     @push('js')
     {{-- page-specific-js --}}
-    
+
     <script>
         $(document).ready(function() {
-            //showAlert('success', 'change Your changes have been sa/ved successfully!');
-            // console.log('ds');
             
             
             fetchTables();
@@ -382,8 +385,12 @@
         });
 
         function addToCart() {
+            console.log('hide');
+            
             $('#sampleImgOnCart').hide();
             const productId = $(this).data('productid'); 
+            const nameFull  = $(this).data('namefull'); 
+            
             const productName = $(this).find('.search-title b').text(); 
             const productPrice = parseFloat($(this).find('.price').text().replace('$', '')); 
 
@@ -393,34 +400,92 @@
                 let newQty = parseInt(qtyInput.val()) + 1;
                 qtyInput.val(newQty);
             } else {
+
+                console.log(nameFull);
+                const combo = $(this).data('combo'); 
+                let comboLength = Object.keys(combo).length;  // Count the number of properties in the combo object
+
+                let comboDetails = '';  // This will store the dynamically generated HTML for combo items
+
+                if (comboLength > 0) {
+                    // Loop through the combo object and create the list items dynamically
+                    $.each(combo, function(index, item) {
+                        comboDetails += `
+                               <li class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/6122/6122447.png" class="mr-2" style="height: 20px; width:20px;">
+                                    ${item.res_product_title}
+                                </div>
+                                <div>
+                                    X${item.qty}
+                                </div>
+                            </li>
+                        `;
+                    });
+                }
+                let maxLength = 17;
                 let newItem = `
-                    <div class="cart-item" data-product-id="${productId}">
-                        <div class="order-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0"><strong class="product_name_in_cart" style="font-size: 18px">${productName}</strong></p>
-                                <div class="d-flex align-items-center">
-                                    <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
-                                </div>
+                    <li>
+                        <div class="media cart-item" style="padding: 1rem 0rem 1.25rem 0rem;" data-product-id="${productId}">
+                            <div class="mr-3 mt-2">
+                                <a href="" class="text-default collapsed" data-toggle="collapse" data-target="#james${productId}" aria-expanded="false">
+                                    <i class="icon-menu7"></i>
+                                </a>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mt-1">
-                                <p><strong>Price:</strong> <span class="product-price">$${productPrice.toFixed(2)}</span></p>
+                            <div class="media-body">
+                                <div class="media-title font-weight-semibold product_name_in_cart" data-toggle="tooltip" title="${productName}" data-placement="top">
+                                    ${productName.length > maxLength ? productName.substring(0, maxLength) + '...' : productName}
+                                </div>
+                                <span class="text-muted product-price">$${productPrice.toFixed(2)}</span>
+                            </div>
+                            <div class="align-self-center ml-3">
                                 <div class="d-flex align-items-center">
-                                    <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
+                                    <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item mr-2" style="padding: 4px 6px !important; border-radius:0 !important;"><i class="icon-trash"></i></button>
+
+                                    <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus" style="padding: 4px 6px !important; border-radius:0 !important;"><i class="icon-minus3"></i></button>
                                     <input type="text" onChange="updateTotalPrice()" class="form-control qty-input" value="1" min="1"
-                                        style="width: 50px; margin: 0 10px;">
-                                    <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
+                                        style="width: 50px; margin: 0 10px; height:30px;">
+                                    <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus" style="padding: 4px 6px !important; border-radius:0 !important;"><i class="icon-plus3"></i></button>
                                 </div>
                             </div>
-                            <hr>
                         </div>
-                    </div>
+
+                        <div class="collapse" id="james${productId}" style="">
+                            <div class="card-body bg-light border-top border-bottom">
+                                <h6><b>${nameFull}</b></h6>
+                                <ul class="list list-unstyled mb-0">
+                                    ${comboDetails}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
                 `;
                 $('.cart-items').append(newItem);
+                $('[data-toggle="tooltip"]').tooltip();
             }
 
             updateTotalPrice();
         }
-
+        // <div class="cart-item" data-product-id="${productId}">
+        //     <div class="order-item">
+        //         <div class="d-flex justify-content-between align-items-center">
+        //             <p class="mb-0"><strong class="product_name_in_cart" style="font-size: 18px">${productName}</strong></p>
+        //             <div class="d-flex align-items-center">
+        //                 <button type="button" class="btn bg-danger btn-icon rounded-round legitRipple delete-item"><i class="icon-trash"></i></button>
+        //             </div>
+        //         </div>
+        //         <div class="d-flex justify-content-between align-items-center mt-1">
+        //             <p><strong>Price:</strong> <span class="product-price">$${productPrice.toFixed(2)}</span></p>
+        //             <div class="d-flex align-items-center">
+        //                 <button type="button" class="btn bg-warning btn-icon rounded-round legitRipple qty-minus"><i class="icon-minus3"></i></button>
+        //                 <input type="text" onChange="updateTotalPrice()" class="form-control qty-input" value="1" min="1"
+        //                     style="width: 50px; margin: 0 10px;">
+        //                 <button type="button" class="btn bg-success btn-icon rounded-round legitRipple qty-plus"><i class="icon-plus3"></i></button>
+        //             </div>
+        //         </div>
+        //         <hr>
+        //     </div>
+        // </div>
         $(document).on('click', '.delete-item', function() {
             $(this).closest('.cart-item').remove();
             updateTotalPrice(); 
@@ -831,6 +896,8 @@
                     getTotalUnpaidBills();
                     getTotalAvailableTables();
                     getTotalAmountSold();
+                    
+                    window.open('/generate-payment-bill/'+response.orderId, '_blank');
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -1010,10 +1077,11 @@
                     if(status == "Paid")
                     {
                         $('#updateOrder').prop('disabled', true);
+                        $('#orderPayment').prop('disabled', true);
                     }else if (status == "Ordered"){
                         $('#updateOrder').prop('disabled', false);
-                    }
-                    
+                        $('#orderPayment').prop('disabled', false);
+                    } 
                 },
                 error: function(error) {
                     console.error("Error in submitting order:", error);
@@ -1167,13 +1235,15 @@
 
 
     @push('css')
-    
+
     {{-- page-specific-css --}}
     <style>
-        .nav-tabs-solid .nav-item.show .nav-link.active, .nav-tabs-solid .nav-link.active {
+        .nav-tabs-solid .nav-item.show .nav-link.active,
+        .nav-tabs-solid .nav-link.active {
             color: #fff;
             background-color: #059711;
         }
+
         /* HTML: <div class="loader"></div> */
         .cart-section-body {
             position: relative;
@@ -1480,6 +1550,7 @@
                 -webkit-mask-size: auto, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px
             }
         }
+        
     </style>
     @endpush
 </x-smart-master>

@@ -23,5 +23,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/product-order', [ResProductController::class, 'product']);
     Route::get('/product-order-list', [ResProductController::class, 'productOrderList']);
     Route::get('/generate-thermal-receipt/{id}', [PdfController::class, 'generateThermalReceipt']);
+    Route::get('/generate-payment-bill/{id}', [PdfController::class, 'generatePaymentBill']);
 
 });

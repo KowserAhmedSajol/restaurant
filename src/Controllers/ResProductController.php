@@ -13,11 +13,11 @@ class ResProductController extends ResProductBaseController
 
     public function product()
     {
-        $resProducts = ResProduct::with('category')->get(); // Assuming 'category' is the relation
+        $resProducts = ResProduct::with('category','comboProducts')->get(); // Assuming 'category' is the relation
         $resTaxes = ResTax::where('status',1)->get();
         $products = $resProducts->groupBy('res_category_title');
 
-        // dd($resProducts);
+        // dd($resProducts[7]->comboProducts);
         $resTables = ResTable::where('status',1)->get();
         $resOrders = ResOrder::where('created_at', '>=', Carbon::now()->subDays(1))
         ->orderBy('id', 'desc')

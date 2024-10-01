@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ResProduct extends Model
+class ResComboProduct extends Model
 {
     use Historiable;
     use SoftDeletes;
     use UserTrackable;
 
-    protected $table = 'res_products';
+    protected $table = 'res_combo_products';
     protected $guarded = ['id'];
 
     /**
@@ -28,26 +28,6 @@ class ResProduct extends Model
     public function getRouteKeyName()
     {
         return 'uuid';
-    }
-
-        
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(ResCategory::class, 'res_category_id');
-    }
-
-    public function resOrder(): BelongsTo
-    {
-        return $this->belongsTo(ResOrder::class, 'ResOrder_id');
-    }
-    public function resOrderItem(): BelongsTo
-    {
-        return $this->belongsTo(ResOrderItem::class, 'ResOrderItem_id');
-    }
-
-    public function comboProducts(): HasMany
-    {
-        return $this->hasMany(ResComboProduct::class, 'combo_product_id');
     }
 
     public function createdBy(): HasOne
